@@ -12,7 +12,7 @@ var express = require('express'),
 var app = express();
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 80);
+  app.set('port', process.env.PORT || 5000);
   app.engine('ejs', engine);
   app.set('view engine', 'ejs');
   app.set('views', __dirname + '/views');
@@ -24,9 +24,11 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'public')));
 });
 
-app.configure('development', function(){
-  app.use(express.errorHandler());
-});
+if (process.env.DEBUG) {
+	app.configure('development', function(){
+	  app.use(express.errorHandler());
+	});
+}
 
 app.get('/', routes.index);
 app.get(/-detail$/, routes.detail);
