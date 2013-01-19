@@ -1,0 +1,8 @@
+<% layout('layout') -%>
+    <h1><%= title %></h1>
+    <div class="products"><%  
+		var i = 0; len = products.length;
+		for(;i < len; i++) { %>
+			<a href="<%= products[i].productURL %>"><img src="<%= products[i].images[6] %>" /></a>
+		<% } %>
+	</div>
