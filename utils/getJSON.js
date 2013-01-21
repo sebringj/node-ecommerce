@@ -8,7 +8,7 @@ var https = require("https");
  */
 exports.getJSON = function(options, onResult)
 {
-    //var prot = options.port == 443 ? https : http;
+    var prot = options.port == 443 ? https : http;
     var req = http.request(options, function(res)
     {
         var output = [];
